@@ -1,0 +1,38 @@
+header {
+    background-color: lightgray;
+}
+li {
+    display:inline-block;
+    list-style: none;
+    margin-top: 10px;
+}
+.page_link {
+    margin: 10px 60px 10px 10px;
+}
+.schema_link {
+    margin: 10px 910px 10px 10px;
+}
+.schema {
+    color: black;
+    font-size: large;
+}
+.link_page {
+    color: black;
+}
+.user_log {
+color: darkgray;
+}
+.user {
+    color: gray;
+}
+.log_out {
+    color: darkgray;
+}
+
+#new_schema {
+    margin-left: 857px;
+}
+
+#add_schema {
+    margin-left: 900px;
+}
