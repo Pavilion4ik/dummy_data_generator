@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+  <title>Schema list</title>
+{% endblock %}
+{% block content %}
+
+  <h1>
+    Data schemas
+
+    <a class="btn btn-success link-to-page" id="new_schema" href="{% url "fake_data_generator:schema-create" %}">
+      New Schema
+      <i class="fas fa-plus"></i>
+    </a>
+  </h1>
+  {% if schema_list %}
+    <table class="table table-strip table-bordered text-center bg-white">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Title</th>
+        <th scope="col">Modified</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      {% for fakeschema in schema_list %}
+        <tbody>
+        <tr class="text-dark">
+          <td>{{ forloop.counter }}</td>
+          <td>
+            <a class="btn btn-link"
+               href="{% url "fake_data_generator:schema-detail" pk=fakeschema.id %}"> {{ fakeschema.name }}</a>
+          </td>
+          <td>
+            {% if fakeschema.updated %} {{ fakeschema.updated }} {% else %} {{ fakeschema.created }} {% endif %}
+          </td>
+          <td>
+            <a class="btn btn-success" href="{% url 'fake_data_generator:schema-edit' pk=fakeschema.id %}">Edit<i
+                class="btn-success"></i></a>
+            <a class="btn btn-danger link-to-page"
+               href="{% url "fake_data_generator:schema-delete" fakeschema.id %}">
+              Delete <i class="fas fa-trash-alt"></i></a>
+          </td>
+        </tr>
+        </tbody>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There is no schemas :(</p>
+  {% endif %}
+{% endblock %}

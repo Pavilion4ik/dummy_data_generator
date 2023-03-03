@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}<title>{{ object|yesno:"Update,Add" }} schema</title>{% endblock %}
+
+{% block content %}
+
+  <form action="" method="post" enctype="multipart/form-data">
+    <h2>{{ object|yesno:"Update,New" }} schema {% if schema %}{{ schema.title }}{% endif %}
+    <button type="submit" name="action" value="submit" class="btn btn-success link-to-page"
+            id="add_schema">Submit</button>
+    </h2>
+
+    {% csrf_token %} {{ form|crispy }}
+      <h3>Schema columns</h3>
+        {% for formset in inlines %}
+        <div class="formset">
+          {{ formset.management_form}} {% for columnsform in formset %}
+          <div class="row flex-nowrap row-cols-lg-auto g-3 align-items-center">
+            {{ columnsform|crispy}}
+          </div>
+          {% if forloop.last %}
+            <div>
+              <button class="btn btn-success link-to-page" type="submit" name="action" value="add_column">Add column</button>
+            </div>
+          {% endif %} {% endfor %}
+        </div>
+      {% endfor %}
+
+  </form>
+{% endblock %}

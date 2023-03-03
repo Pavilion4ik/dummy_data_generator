@@ -1,0 +1,10 @@
+{% block content %}
+  <h1>Delete schema</h1>
+  <p>Are you sure you want to delete schema: {{ object.name }}</p>
+  {{ fakeschema.id }}
+  <form action="{% url "fake_data_generator:schema-delete" pk=object.id %}">
+    {% csrf_token %}
+        <a href="{% url "fake_data_generator:schemas-list" %}">Yes, delete</a>
+        <a href="{% url "fake_data_generator:schemas-list" %}">Cancel</a>
+  </form>
+{% endblock %}
