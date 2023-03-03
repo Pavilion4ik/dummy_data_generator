@@ -27,3 +27,11 @@ python manage.py createsuperuser #create user for tests
 python manage.py runserver  #starts Django server
 ```
 
+Check it online!
+https://blin4ik.pythonanywhere.com
+
+Admin-user credentials for web-site:
+
+username: admin
+
+password: qwerqaz.v
